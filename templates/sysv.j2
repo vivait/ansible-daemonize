@@ -13,7 +13,7 @@ DAEMON="{{daemonize_bin}}"
 DAEMON_OPTS="{{daemonize_bin_opts}} {{daemonize_command}} {{daemonize_opts}}"
 
 START_OPTS="--start --background --make-pidfile --pidfile ${PIDFILE} --chuid {{daemonize_uid}}:{{daemonize_gid}} --exec ${DAEMON} -- ${DAEMON_OPTS}"
-STOP_OPTS="--stop --pidfile ${PIDFILE}"
+STOP_OPTS="--stop --oknodo --retry 5 --pidfile ${PIDFILE}"
  
 test -x "$DAEMON" || (echo "Binary $DAEMON does not exist" && exit 1)
  
