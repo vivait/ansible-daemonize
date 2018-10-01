@@ -1,6 +1,6 @@
 ---
 - name: restart daemon
-  sudo: true
+  become: true
   service: >
     name={{ daemonize_script_name }}
     state=started
